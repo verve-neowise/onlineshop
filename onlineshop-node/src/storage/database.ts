@@ -1,13 +1,14 @@
 
-import { Model, Sequelize } from "sequelize";
+import { Sequelize } from "sequelize";
 import { userModel } from "./model/user.model";
+import config from '../config'
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(config.databaseUrl, {
     logging: console.log
 })
 
-Model.prototype['mapTo'] = function<T>() {
-    return this.get({ plain: true }) as T
-}
-
 export const UserModel = userModel(sequelize)
+
+sequelize.sync({ force: true })
+
+export {}

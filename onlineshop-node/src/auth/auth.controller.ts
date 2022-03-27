@@ -4,6 +4,7 @@ import { Auth } from './model/auth'
 import { LoginDto } from "./dto/login.dto";
 import { RegisterDto } from "./dto/register.dto";
 import jwt from 'jsonwebtoken'
+import config from "../config";
 
 @Controller('auth')
 export class AuthController {
@@ -32,7 +33,7 @@ export class AuthController {
 
             let token = jwt.sign(
                 { username, phone, role },
-                process.env.SECRET_KEY,
+                config.secretKey,
                 { expiresIn: '2h' }
             )
 

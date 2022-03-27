@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize } from "sequelize/types"
+import { DataTypes, Sequelize } from "sequelize"
 import { ModelProvider } from './model.provider'
 
 export const userModel: ModelProvider = (sequelize: Sequelize) => {

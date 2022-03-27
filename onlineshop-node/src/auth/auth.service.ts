@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { UserModel } from "src/storage/database";
+import { UserModel } from "../storage/database";
 import { RegisterDto } from "./dto/register.dto";
 import { Role, User } from './model/user'
 import { mapTo } from '../storage/extentions'
