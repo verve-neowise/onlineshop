@@ -1,9 +1,9 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, Injectable } from "@nestjs/common";
 import { UserModel } from "../storage/database";
 import { RegisterDto } from "./dto/register.dto";
 import { Role, User } from './model/user'
 import { mapTo } from '../storage/extentions'
-import SHA256 from 'crypto-js/sha256'
+import sha256 from 'crypto-js/sha256';
 
 @Injectable()
 export class AuthService {
@@ -16,10 +16,10 @@ export class AuthService {
             throw new Error(`User with username: ${username} already exists!`)
         }
 
-        let encrypedPassword = SHA256(password).toString()
+        let encrypedPassword = sha256(password).toString()
 
         let user: User = {
-            id: 0,
+            id: undefined,
             username: username,
             password: encrypedPassword,
             name: registerDto.name,
@@ -40,7 +40,7 @@ export class AuthService {
         let user = await UserModel.findOne({
             where: { username }
         })
-
-        return mapTo<User>(user)
+        
+        return user ? mapTo<User>(user) : undefined
     }
 }

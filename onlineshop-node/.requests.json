@@ -1,0 +1,13 @@
+{
+    "login": {
+        "username": "neowise",
+        "password": "1234"
+    },
+    "register": {
+        "username": "neowise",
+        "password": "1234",
+        "name":     "Jalol",
+        "phone":    "+998912345678",
+        "address":  "Greenland"
+    }
+}

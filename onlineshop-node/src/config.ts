@@ -1,10 +1,11 @@
 import * as dotenv from 'dotenv'
-
 dotenv.config({
-    path: __dirname + '/../../.env'
+    path: __dirname + '/../.env'
 })
 
-console.log(__dirname);
+console.log(__dirname + '/../.env');
+
+console.log(process.env.DATABASE_URL);
 
 
 export default {
